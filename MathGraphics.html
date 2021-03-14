@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Graphics and Math</title>
+</head>
+<body>
+
+<h1>Overview and Table of Contents</h1>
+<h3>Copyright &copy; Eric Chauvin 2021.</h3>
+<br>
+
+<p>This project is about basic graphics
+ and the math needed for graphics, but also much
+ more. It is about the math for vectors,
+ quaternions, tensors and other things.
+ It makes it so those mathematical ideas can
+ be visualized.  If you are reading books about
+ vectors, matrices and tensors, this source
+ code shows examples of how they are used.  It's
+ not meant to replace those books.
+</p>
+
+<p>In relativity, there is the main idea of
+ an observer.  The observer defines a frame
+ of reference.  Einstein wrote about how an
+ observer could be sitting in a moving train,
+ and that person in the moving train was a
+ frame of reference.  They saw the world from
+ their point of view in a moving train.
+</p>
+
+<p>In graphics programming there is the idea
+ of a Camera Position, which sets up a frame
+ of reference.  The camera points in a certain
+ direction, so looking at the world from
+ that camera position is the same idea of an
+ observer and their frame of reference.  So it's
+ possible to visualize what things look like in
+ 3D graphics from that observer's point of view.
+</p>
+
+<p>The camera is a single point, like a
+ pin-hole camera.  It's like the pupil of your
+ eye.  So it has a set of coordinates for the
+ point where the eye is.  It has a LookAt vector
+ which points toward where the observer is
+ looking, and it has an Up vector which tells you
+ which was is up.  The cross product of the
+ LookAt and Up vectors gives you a third vector,
+ so those three vectors give you the basis
+ vectors for a 3D coordinate system.  That
+ defines the reference frame of the observer.
+</p>
+
+<p>In 3D graphics it is common to do the math
+ on the graphics processor with Homogeneous
+ Coordinates, also known as Projective Coordinates.
+ The four coordinates x, y, z, and w, are used
+ to project 3D coordinates on to a two dimensional
+ display.  The Vector4EC.java source code file
+ shows how to do operations with those vectors.
+</p>
+
+<p>A second observer holding their own camera
+ has their own frame of reference, and you can
+ use Matrix Transformations to translate
+ something in the language of your reference frame
+ in to their reference frame.  Or to put it
+ another way, you can see things in 3D graphics
+ from another person's point of view.  The
+ Matrix4EC.java file shows how to do those
+ transformations with a transformation matrix.
+</p>
+
+
+
+</body>
+</html>
