@@ -13,30 +13,31 @@ The price of Bitcoin in US Dollars.</a>
 </p>
 
 <p>Bitcoin is all about Cryptography and the
- technical details of programming for it, but 
+ technical details of programming for it, but
  some of the ideas about Bitcoin are based on
  Game Theory and the incentives that people
  have.  So, like any other form of Economics it
  is based on people's behavior.
  Something is valuable because people believe
- it is valuable.  People will pay for something
+ it has value.  People will pay for something
  because it has value to them.  For example
  Beauty has value to many women and so the
  company L'Oreal is valued at about
- 163 billion dollars.
+ 163 billion dollars.  People value food, so
+ the Kroger grocery store company has a market
+ cap of something like 27 billion dollars.
 </p>
 
-<p>Bitcoin has value because people believe it
- has value.  They will pay for it.
+<p>Bitcoin has value because people think it
+ has value.
 </p>
 
 <p>The market cap for Bitcoin would be the price
  of one Bitcoin times the number of Bitcoins,
- and it's something like a Trillion dollars.
- If the main encrytion algorithm that Bitcoin
- is based on could be broken then Bitcoin would
- be worthless, and that Trillion dollars in
- Bitcoin would suddenly become worth zero.
+ and it was something like a Trillion dollars
+ last time I checked.  If the main encrytion
+ algorithm that Bitcoin is based on could be
+ broken then Bitcoin would be worthless.
 </p>
 
 <p>The maximum number of Bitcoins is based on
@@ -53,7 +54,7 @@ The price of Bitcoin in US Dollars.</a>
  Bitcoin associated with that private key is
  not spendable.  It becomes worthless. The
  private key, the encryption key, is what
- actually has value.
+ has value.
 </p>
 
 <p>If you think of the private key as a password,
@@ -71,7 +72,7 @@ The price of Bitcoin in US Dollars.</a>
 <p>There was a contest called the RSA Factoring
  Challenge, which was a contest with prizes up
  to 200,000 dollars, to get people to try and
- break the RSA CryptoSystem.  But that contest
+ break the RSA Crypto System.  But that contest
  actually goes back to an article in Scientific
  American in 1977, by Martin Gardner, called
  "A new kind of cipher that would take millions
@@ -100,6 +101,58 @@ The price of Bitcoin in US Dollars.</a>
  the Emperor is not wearing any clothes. I am
  trying to demonstrate that a private key can
  be found.
+</p>
+
+<br>
+<p>Now for more technical details.
+</p>
+
+<p>Bitcoin uses the specification at:
+ <a href="http://www.secg.org/sec2-v2.pdf">
+Standards for Efficient Cryptography secp256k1.</a>
+</p>
+
+<p>A Bitcoin has an address.  To spend a Bitcoin,
+ the owner of the Bitcoin has to sign a
+ transaction with their private key, using the
+ Elliptic Curve Digital Signature Algorithm
+ (ECDSA).
+
+<p>The history of this algorithm goes back more
+ than 2,000 years to Euclid's geometric ideas of
+ points on a circle.  What would now be called
+ rational points on a curve.
+</p>
+
+<p>After Isaac Newton lived, when people like
+ Leonhard Euler were studying the elliptical
+ orbits of planets, they used an elliptic
+ integral for integrating along the arc length
+ of the elliptical orbit.  The elliptic
+ integral is a cubic equation, and what is
+ called Elliptic Curve Cryptography is based
+ on a cubic equation not an equation for an
+ ellipse.
+</p>
+
+<p>In cryptography the points on that cubic
+ curve have integers for their x and y components.
+ The slope of a line between two points
+ on a curve is used in the math, and that slope
+ is a rational number.  Except that with the
+ modular arithmetic that is used in Cryptography,
+ that slope, and those points, have integer
+ values.  It is a very Algebraic form of Geometry
+ where the slope of a line isn't all that
+ visualizable like in regular geometry.  The
+ math for those things can be seen in the
+ EPoint.java file and the ModNumber.java
+ file.
+</p>
+
+
+<p><a href="https://github.com/EricInArizona/BitcoinJava">
+See the Java source code.</a>
 </p>
 
 </body>
