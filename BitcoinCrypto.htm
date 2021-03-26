@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Bitcoin and Cryptography</title>
+<title>How Bitcoin Works</title>
 </head>
 <body>
-<h1>Bitcoin and Cryptography</h1>
-<p>Copyright &copy; Eric Chauvin 2021.</p>
+<h1>How Bitcoin Works</h1>
+<p>Last updated March 24, 2021.<br>
+Copyright &copy; Eric Chauvin 2021.</p>
 <br>
 
 <p><a href="https://finance.yahoo.com/quote/BTC-USD/">
@@ -46,7 +47,9 @@ The price of Bitcoin in US Dollars.</a>
  those agreements.  So even though it's not
  impossible that the algorithms can be changed,
  the way it is now, the maximum number of
- Bitcoins is about 21 million.  That's the
+ Bitcoins is about 21 million.  Meaning you
+ can't debase the currency by just printing
+ more money.  That's the
  theoretical maximum, but some people have
  lost their private keys, or they died or
  something, and so those Bitcoins are lost.
@@ -97,14 +100,15 @@ The price of Bitcoin in US Dollars.</a>
  up with a way to get the private key?  Could
  a hacker find the private key?  That is what
  I am trying to do.  But very publicly.  Not in
- secret, like a thief, but more like saying that
- the Emperor is not wearing any clothes. I am
- trying to demonstrate that a private key can
- be found.
+ secret, like a thief, but like in the story
+ about the emperor's new clothes.  More like
+ saying that the Emperor is not wearing any
+ clothes.  I am trying to demonstrate that a
+ private key can be found.
 </p>
 
 <br>
-<p>Now for more technical details.
+<p>Now for the technical details.
 </p>
 
 <p>Bitcoin uses the specification at:
@@ -118,10 +122,14 @@ Standards for Efficient Cryptography secp256k1.</a>
  Elliptic Curve Digital Signature Algorithm
  (ECDSA).
 
-<p>The history of this algorithm goes back more
- than 2,000 years to Euclid's geometric ideas of
- points on a circle.  What would now be called
- rational points on a curve.
+<p>The history of the Elliptic Curve algorithm
+ used in Bitcoin goes back at
+ least 2,500 years to Euclid and Pythagoras and
+ their geometric ideas about points on a circle,
+ what are called Pythagorean Triples.  What
+ would now be called rational points on a
+ curve and an algorithm for finding
+ Pythagorean Triples.
 </p>
 
 <p>After Isaac Newton lived, when people like
@@ -131,29 +139,104 @@ Standards for Efficient Cryptography secp256k1.</a>
  of the elliptical orbit.  The elliptic
  integral is a cubic equation, and what is
  called Elliptic Curve Cryptography is based
- on a cubic equation not an equation for an
+ on a cubic equation, not an equation for an
  ellipse.
+</p>
+
+<p>There is something called a Point at Infinity
+ which is like a vanishing point in a perspective
+ drawing.  It is from Projective Geometry.  It's
+ like standing between two straight train tracks
+ and looking off in to the distance.  The train
+ tracks appear to meet At Infinity.
+</p>
+
+<p>One time I bought a train ticket and on the
+ back of the ticket, in very fine print, it said
+ something like "This is not a contract to give
+ you a ride to anywhere."  Sometimes you'll see
+ a legal contract that says something like
+ "What ever the salesman told you is not in
+ this contract.  The only contract between us
+ is what is written here in this document."
+</p>
+
+<p>In mathematics, the only contract is what
+ is written in the axioms, or the postulates of
+ the system.  So if Euclid of Alexandria, back
+ in the year 300 BC, said that two lines, "if
+ extended indefinitely", do so and so, then that
+ is what is in the contract.  And the lawyers
+ can debate the meaning of the words
+ "extended indefinittely", like the train tracks
+ that go off in to the distance and meet At
+ Infinity.
+</p>
+
+<p>But with software, the only contract is what
+ you write in the code.  So if I write in my code
+ that Infinity = 0, then it only means that.  It
+ does not mean what the salesman told you.
+</p>
+
+<p>If I use the word 'infinite' in a sentence
+ like "the slope is infinite" I mean the
+ way that the word Infinity is defined in
+ the code.  There is no argument here about the
+ fine points of the meaning of the word
+ Infinity, or the phrase 'approaches infinity'.
+ I might explain it by saying that the slope
+ of a line approaches infinity, but the only
+ real contract is what is written in
+ the code.
+</p>
+
+<p>Algebraically, Infinity is like zero, because
+ P + Infinity = P.  It is called the Additive
+ Identity.
 </p>
 
 <p>In cryptography the points on that cubic
  curve have integers for their x and y components.
  The slope of a line between two points
  on a curve is used in the math, and that slope
- is a rational number.  Except that with the
- modular arithmetic that is used in Cryptography,
+ is a rational number, like with Pythagorean
+ Triples, except that with the modular
+ arithmetic that is used in Cryptography,
  that slope, and those points, have integer
  values.  It is a very Algebraic form of Geometry
  where the slope of a line isn't all that
  visualizable like in regular geometry.  The
  math for those things can be seen in the
  EPoint.java file and the ModNumber.java
- file.
+ file.  The arithmetic for points on an
+ elliptic curve is defined in those files.
 </p>
-
 
 <p><a href="https://github.com/EricInArizona/BitcoinJava">
 See the Java source code.</a>
 </p>
+
+<p>The Java source code is meant to explain the
+ concepts with small numbers.  For the actual
+ cryptographic source code, see the
+ <a href="https://github.com/EricInArizona/BitcoinCpp">
+ C++ source code.</a>
+</p>
+
+<p>There is the idea of doing arithmetic on the
+ points of a curve.  You can add, subtract,
+ multiply and divide points on a curve.  The
+ file EPoint.java shows how to do those operations
+ on points on a curve.  The add() function in
+ the EPoint.java file defines what it means to
+ add two points on a curve.  There are comments
+ in the source code that explain some of the
+ details of what it means to do arithmetic on
+ points on a curve.
+</p>
+
+
 
 </body>
 </html>
