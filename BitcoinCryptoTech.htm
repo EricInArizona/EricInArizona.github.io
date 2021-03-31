@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>How Bitcoin Works (Technical Details)</title>
+</head>
+<body>
+<h1>How Bitcoin Works<br>The Technical Details</h1>
+<p>Last updated March 31, 2021.<br>
+Copyright &copy; Eric Chauvin 2021.</p>
+<br>
+
+<p>This explanation is a continuation of the
+ document at
+ <a href="https://ericinarizona.github.io/BitcoinCrypto.htm">
+ The Non Technical Overview.</a> So you should read
+ that first and then continue on with this
+ document.
+</p>
+
+<p>Bitcoin uses the specifications at:
+ <a href="http://www.secg.org/sec2-v2.pdf">
+Standards for Efficient Cryptography secp256k1.</a>
+</p>
+
+<p>A Bitcoin has an address.  To spend a Bitcoin,
+ the owner of the Bitcoin has to sign a
+ transaction with their private key, using the
+ Elliptic Curve Digital Signature Algorithm
+ (ECDSA).
+
+<p>The history of the Elliptic Curve algorithm
+ used in Bitcoin goes back at
+ least 2,500 years to Euclid and Pythagoras and
+ their geometric ideas about points on a circle,
+ what are called Pythagorean Triples.  What
+ would now be called rational points on a
+ curve and an algorithm for finding
+ Pythagorean Triples.
+</p>
+
+<p>After Isaac Newton lived, when people like
+ Leonhard Euler were studying the elliptical
+ orbits of planets, they used an elliptic
+ integral for integrating along the arc length
+ of the elliptical orbit.  The elliptic
+ integral is a cubic equation, and what is
+ called Elliptic Curve Cryptography is based
+ on a cubic equation, not an equation for an
+ ellipse.
+</p>
+
+<p>I will use phrases like "an infinite slope"
+ and other uses of the word 'infinite' like that,
+ but with software, the only definitions for words
+ are how the words are defined in the code.
+ So if I write in my code that Infinity = 0,
+ then it only means that.  It does not mean
+ what the salesman told you.
+</p>
+
+<p>There is no argument here about the
+ fine points of the meaning of the word
+ Infinity, or the phrase 'approaches infinity'.
+ I might explain it by saying that the slope
+ of a line approaches infinity, but the only
+ real contract is what is written in
+ the code.
+</p>
+
+<p>Algebraically, as it is used in this code,
+ Infinity is like zero, because
+ P + Infinity = P.  It is called the Additive
+ Identity.
+</p>
+
+<p>In cryptography the points on the cubic
+ curve have integers for their x and y components.
+ The slope of a line between two points
+ on a curve is used in the math, and that slope
+ is a rational number, like with Pythagorean
+ Triples, except that with the modular
+ arithmetic that is used in Cryptography,
+ that slope, and those points, have integer
+ values.  It is a very Algebraic form of Geometry
+ where the slope of a line isn't all that
+ visualizable like in regular geometry.  The
+ math for those things can be seen in the
+ EPoint.java file and the ModNumber.java
+ file.  The arithmetic for points on an
+ elliptic curve is defined in those files.
+</p>
+
+<p><a href="https://github.com/EricInArizona/BitcoinJava">
+See the Java source code.</a>
+</p>
+
+<p>The Java source code is meant to explain the
+ concepts with small numbers.  For the actual
+ cryptographic source code, see the
+ <a href="https://github.com/EricInArizona/BitcoinCpp">
+ C++ source code.</a>
+</p>
+
+<p>There is the idea of doing arithmetic on the
+ points of a curve.  You can add, subtract,
+ multiply and divide points on a curve.  The
+ file EPoint.java shows how to do those operations
+ on points on a curve.  The add() function in
+ the EPoint.java file defines what it means to
+ add two points on a curve.  There are comments
+ in the source code that explain some of the
+ details of what it means to do arithmetic on
+ points on a curve.
+</p>
+
+
+
+</body>
+</html>
