@@ -5,7 +5,7 @@
 </head>
 <body>
 <h1>How Bitcoin Works<br>The Technical Details</h1>
-<p>Last updated March 31, 2021.<br>
+<p>Last updated April 5, 2021.<br>
 Copyright &copy; Eric Chauvin 2021.</p>
 <br>
 
@@ -17,16 +17,41 @@ Copyright &copy; Eric Chauvin 2021.</p>
  document.
 </p>
 
-<p>Bitcoin uses the specifications at:
+<p>Bitcoin uses the cryptographic ECDSA
+ algorithm specifications described at:
  <a href="http://www.secg.org/sec2-v2.pdf">
 Standards for Efficient Cryptography secp256k1.</a>
 </p>
 
-<p>A Bitcoin has an address.  To spend a Bitcoin,
- the owner of the Bitcoin has to sign a
- transaction with their private key, using the
- Elliptic Curve Digital Signature Algorithm
- (ECDSA).
+<p>Transactions in Bitcoin use an address, which
+ is a hash of the public key.  To spend some
+ Bitcoin, which means to send it to someone
+ else, you send it from your address to their
+ address.  See
+ <a href="https://en.bitcoin.it/wiki/Transaction">
+ Bitcoin Transactions</a> and also see
+ <a href="https://en.bitcoin.it/wiki/Script">
+ Bitcoin Script.</a>
+</p>
+
+<p>The owner of the Bitcoin has to sign a
+ transaction with their private key, using
+ the Elliptic Curve Digital Signature Algorithm
+ (ECDSA).  So I am focusing on that particular
+ algorithm.  If it was possible to find the
+ private key for a public key that corresponds
+ to a transaction, you could spend someone
+ else's money.  Which would mean that the
+ system is not secure, and so the whole system
+ of Bitcoin would have no value.  Kind of like
+ a bank that had a big safe full of gold coins
+ as their only asset.  But they accidently
+ published the combination to the safe,
+ allowing anyone to go in and grab those gold
+ coins.  There would be a horde of people
+ grabbing those coins, and it would bring the
+ value of the bank itself to zero.
+</p>
 
 <p>The history of the Elliptic Curve algorithm
  used in Bitcoin goes back at
@@ -53,24 +78,40 @@ Standards for Efficient Cryptography secp256k1.</a>
  and other uses of the word 'infinite' like that,
  but with software, the only definitions for words
  are how the words are defined in the code.
- So if I write in my code that Infinity = 0,
+ So if I write in my code that Infinity = 1234567,
  then it only means that.  It does not mean
  what the salesman told you.
 </p>
 
-<p>There is no argument here about the
- fine points of the meaning of the word
- Infinity, or the phrase 'approaches infinity'.
- I might explain it by saying that the slope
- of a line approaches infinity, but the only
- real contract is what is written in
- the code.
-</p>
-
 <p>Algebraically, as it is used in this code,
- Infinity is like zero, because
+ Infinity is sort of like zero, because
  P + Infinity = P.  It is called the Additive
  Identity.
+</p>
+
+<p>The idea of a point at infinity comes from
+ an idea in Projective Geometry.  You can learn
+ more about that in my
+ <a href="https://ericinarizona.github.io/MathGraphics.htm">
+ Math and Graphics</a> page, where I talk about
+ Projective Space and graphics programming.
+ In graphics programming it is common to use
+ Homogeneous Coordinates, where points in 3D
+ space are represented with 4 numbers.  The
+ details are there, but just for future
+ reference, if a 2D curve was represented with
+ three numbers, then the point At Infinity
+ would have the three numbers 0,1,0 and the
+ normal points on the curve would be
+ represented like x,y,1.  It's like the
+ normal points on a curve are in a different
+ plane from the point at infinity, with the
+ point at infinity having a Z coordinate of 0.
+ But in the EPoint.java file you can see just
+ two coordinates, rather than having a redundant
+ 1 for every point.  It is just understood to
+ have a Z coordinate of 1 for all of those
+ points.
 </p>
 
 <p>In cryptography the points on the cubic
@@ -83,11 +124,7 @@ Standards for Efficient Cryptography secp256k1.</a>
  that slope, and those points, have integer
  values.  It is a very Algebraic form of Geometry
  where the slope of a line isn't all that
- visualizable like in regular geometry.  The
- math for those things can be seen in the
- EPoint.java file and the ModNumber.java
- file.  The arithmetic for points on an
- elliptic curve is defined in those files.
+ visualizable like in regular geometry.
 </p>
 
 <p><a href="https://github.com/EricInArizona/BitcoinJava">
@@ -97,7 +134,7 @@ See the Java source code.</a>
 <p>The Java source code is meant to explain the
  concepts with small numbers.  For the actual
  cryptographic source code, see the
- <a href="https://github.com/EricInArizona/BitcoinCpp">
+ <a href="https://github.com/EricInArizona/Cryptography">
  C++ source code.</a>
 </p>
 
@@ -113,7 +150,23 @@ See the Java source code.</a>
  points on a curve.
 </p>
 
+<p>The expression Q = nP means to add P n times.
+ It is Scalar multiplication of the point P.
+ The public key is a point on the curve.
+ The private key is an integer k.  To get the
+ public key, multiply the integer k, the
+ private key, with the generator point G.
+ So pubKey = kG.
+</p>
 
+<p>A private key is a large integer.  The
+ public key is a point on the curve.
+</p>
+
+<p><a href="https://ericinarizona.github.io/">
+ Main Page</a>
+<br><br>
+</p>
 
 </body>
 </html>
