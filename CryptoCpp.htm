@@ -36,7 +36,35 @@ See the C++ source code.</a>
  RandomCrypto.h file because of the capital S
  in RSA.
 </p>
- 
+
+<p>Notice that I don't pollute code with macro
+ definitions.  I don't use the preprocessor at
+ all except for (#pragma once) and #include
+ statements.  In places where I have to #include
+ standard files that have macros defined, like
+ in the FileIO.cpp file, where iostream is
+ included, I only do that in a cpp file, and
+ never in a header file.  That way the pollution
+ from macros only stays in that one translation
+ unit.  And I know I can use all of my own
+ header files knowing that no macros are
+ defined in them.  In some places, like the
+ Integer.h file, you'll see inline functions
+ like setToZero().  In a modern compiler, with
+ inline functions, the idea that macros make
+ for more efficient code is obsolete.
+</p>
+
+<p>Now days software controls autonomous cars,
+ airplanes, all kinds of finance, medical
+ devices, compilers, and all kinds of things,
+ so that reliability is <i><b>always</b</i> more
+ important than speed.  Even if you are trying to
+ break speed records for how fast you can factor
+ large integers, you want to do it reliably and
+ correctly.  So get rid of the macros.
+</p>
+
 
 <p><a href="https://ericinarizona.github.io/">
  Main Page</a>
