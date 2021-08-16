@@ -61,8 +61,29 @@ See the C++ source code.</a>
  so that reliability is <i><b>always</b></i> more
  important than speed.  Even if you are trying to
  break speed records for how fast you can factor
- large integers, you want to do it reliably and
- correctly.  So get rid of the macros.
+ large integers, which is what I am trying to do,
+ you want to do it reliably and correctly.
+ So get rid of the macros.
+</p>
+
+<p>The Integer.h file has an array for the digits,
+ and it is defined as a fixed size array, and
+ there is no memory allocation done in the
+ constructor with a <i><b>new</i></b>
+ statement.  The Integer object gets pushed
+ on to the stack, in the scope where it is
+ defined, and so the only memory allocation
+ that gets done is to change the stack pointer.
+ That's different from something like in
+ the TwoDUint64.cpp file where the constructor
+ is used to allocate memory with a
+ <i><b>new</i></b> statement.  And once the
+ Integer goes out of scope the Stack Pointer
+ just gets popped back to what it was.
+ So that speeds up algorithms that are
+ constantly creating new temporary Integer
+ objects to use.  Look in BuildProj.bat for the
+ linker option to increase the stack size.
 </p>
 
 
