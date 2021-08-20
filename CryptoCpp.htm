@@ -5,7 +5,7 @@
 </head>
 <body>
 <h1>Cryptography in C++</h1>
-<p>Last updated August 16, 2021.<br>
+<p>Last updated August 20, 2021.<br>
 Copyright &copy; Eric Chauvin 2021.</p>
 <br>
 
@@ -66,18 +66,39 @@ See the C++ source code.</a>
  So get rid of the macros.
 </p>
 
+<p>And use the
+ <i><b>const</b></i>
+ key word as much as possible.  If you think
+ an object shouldn't change, you should tell
+ the compiler it shouldn't change.  The
+ compiler checks to make sure the
+ code is doing what you say it is supposed
+ to be doing.  And it can also do
+ optimizations since it knows certain things
+ aren't supposed to change.  Check out all of
+ the <i><b>const</b></i> words used in the
+ Integer.h file, for example.
+</p>
+
+<p>This is all written in C++, but there is
+ a difference between how C uses the
+ <i><b>const</b></i> key word and how C++
+ uses it.
+</p>
+
 <p>The Integer.h file has an array for the digits,
- and it is defined as a fixed size array, and
- there is no memory allocation done in the
- constructor with a <i><b>new</i></b>
- statement.  The Integer object gets pushed
- on to the stack, in the scope where it is
- defined, and so the only memory allocation
- that gets done is to change the stack pointer.
+ and it is defined as a constant, fixed size
+ array, and there is no memory allocation
+ done in the constructor with a
+ <i><b>new</b></i> statement.  The Integer
+ object gets pushed on to the stack, in the
+ scope where it is used, and so the only
+ memory allocation that gets done is to
+ change the stack pointer.
  That's different from something like in
  the TwoDUint64.cpp file where the constructor
  is used to allocate memory with a
- <i><b>new</i></b> statement.  And once the
+ <i><b>new</b></i> statement.  Once the
  Integer goes out of scope the Stack Pointer
  just gets popped back to what it was.
  So that speeds up algorithms that are
